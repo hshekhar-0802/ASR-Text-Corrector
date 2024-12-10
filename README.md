@@ -43,6 +43,3 @@ The agent requires three files as input:
   ```python driver.py --output_file=output.json```
   Alternatively,
   ```python driver.py --input_file=<path_to_data.pkl> --phoneme_file=<path_to_phoneme_table.json> --vocab_file=<path_to_vocabulary.json> --output_file=output.json```
-
-## Tests
-[![Play audio]([https://www.example.com/audio_button_image.png](https://img.freepik.com/premium-vector/play-pause-icon-set-music-audio-video-start-pause-button-vector-symbol-black-filled-outlined-style_268104-12801.jpg?w=1380))]([https://www.example.com/path_to_audio_file.mp3](https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav))
