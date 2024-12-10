@@ -11,32 +11,22 @@ class Agent:
         self.best_state = init_sentence
         min_cost = environment.compute_cost(init_sentence)
 
-#         self.best_state = substitute_phonemes(self.best_state, self.phoneme_table, environment, min_cost)
-#         min_cost = environment.compute_cost(self.best_state)
-#         print(f"After substitution, best state: {self.best_state}, Cost: {min_cost}")
-
         self.best_state, subs_idx = substitute_phonemes_by_words(init_sentence, self.best_state, self.phoneme_table, environment, min_cost, set(range(len(self.best_state.split()))))
         min_cost = environment.compute_cost(self.best_state)
-#         print(f"After substitution 2, best state: {self.best_state}, Cost: {min_cost}")
 
         self.best_state, org_idx = substitute_original(init_sentence, self.best_state, min_cost, environment)
         min_cost = environment.compute_cost(self.best_state)
-#         print(f"Best state after orginal subst.: {self.best_state}, Cost: {min_cost}")
 
         reversed_table = reverse_phoneme(self.phoneme_table)
         self.best_state, subs_idx = substitute_phonemes_by_words(init_sentence, self.best_state, reversed_table, environment, min_cost, subs_idx-org_idx)
         min_cost = environment.compute_cost(self.best_state)
-#         print(f"Best state after reverse subst.: {self.best_state}, Cost: {min_cost}")
         
         self.best_state = substitute_phonemes_by_sentence(self.best_state, self.phoneme_table, environment, min_cost)
         min_cost = environment.compute_cost(self.best_state)
-#         print(f"Best state after all subst.: {self.best_state}, Cost: {min_cost}")
         
         self.best_state, front, back = add_vocabulary(self.best_state, self.vocabulary, environment, min_cost)
         min_cost = environment.compute_cost(self.best_state)
-#         print(f"Best state after addition: {self.best_state}, Final Cost: {min_cost}")
         return self.best_state
-         # Apply vocabulary addition to the best state after phoneme substitution
         
 
 def reverse_phoneme(phoneme_table):
