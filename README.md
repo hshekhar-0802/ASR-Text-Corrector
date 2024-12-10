@@ -30,3 +30,16 @@ received with candidate text that your algorithm may consider. Formally, we the 
 s
 as for a given audio a is expressed as f<sub>cost</sub>(s)=L(s,a).
 ## Input Details
+The agent requires three files as input:
+- <b>data.pkl</b> : This is the main input file which consists of the sound data and the text returned by Voice Assistant. It is a pickled list of dictionaries. Each dictionary has two keys: <i>'audio'</i> and <i>'text'</i>. dict['audio'] is another dictionary with two keys: <i>'array'</i> and <i>'sampling rate'</i>. dict['text'] contains the text returned by the Voice Assistant.
+- <b>vocabulary.json</b>
+- <b>phoneme_table.json</b>
+## Execution
+- ### Creating Environment
+  You can create a conda environment using the ```environment.yml``` file provided.<br>
+  ```conda env create -f environment.yml```
+- ### Running the code
+  Create the 3 input files and place them in the ```data``` directory, and simply run the following command: <br>
+  ```python driver.py --output_file=output.json```
+  Alternatively,
+  ```python driver.py --input_file=<path_to_data.pkl> --phoneme_file=<path_to_phoneme_table.json> --vocab_file=<path_to_vocabulary.json> --output_file=output.json```
