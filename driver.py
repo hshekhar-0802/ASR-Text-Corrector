@@ -91,7 +91,7 @@ def main():
 
     cost_model = CostModel()
 
-    from submission.solution import Agent
+    from solution import Agent
     agent = Agent(phoneme_table, vocabulary)
 
     corrected_texts = []
